@@ -682,7 +682,7 @@ function typeCmd(){
   } else {
     setTimeout(()=>{
       let d=cmd.length;
-      (function del(){if(d-->0){el.textContent=cmd.slice(0,d);setTimeout(del,25);}else{ci++;ci2=0;setTimeout(typeCmd,600);}})();
+      (function del(){if(d-- >0){el.textContent=cmd.slice(0,d);setTimeout(del,25);}else{ci++;ci2=0;setTimeout(typeCmd,600);}})();
     },2200);
   }
 }
