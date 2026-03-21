@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BISRI Karim — DevOps & Cloud Engineer</title>
+<meta name="description" content="Portfolio de Karim Bisri — Ingénieur DevOps & Cloud avec +10 ans d'expérience. Spécialisé en Kubernetes, Terraform, GitLab CI/CD et IA appliquée au DevOps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --green:#00ff41;
+  --green-dim:#00cc33;
+  --green-glow:rgba(0,255,65,0.15);
+  --bg:#0a0a0a;
+  --border:rgba(0,255,65,0.2);
+  --border-bright:rgba(0,255,65,0.5);
+  --text:#c8ffd4;
+  --text-dim:#4a7a52;
+  --amber:#ffb700;
+  --cyan:#00ffff;
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'JetBrains Mono',monospace;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,65,0.015) 2px,rgba(0,255,65,0.015) 4px);
+  pointer-events:none;z-index:9999;
+}
+.grid-bg{
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  background-image:linear-gradient(rgba(0,255,65,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,65,0.04) 1px,transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;z-index:0;
+}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,10,10,0.95);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(8px);
+  padding:0 2rem;
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;height:52px;}
+.nav-logo{font-size:13px;color:var(--green);display:flex;align-items:center;gap:6px;}
+.nav-logo .dim{color:var(--text-dim);}
+.nav-links{display:flex;gap:0;}
+.nav-links a{
+  color:var(--text-dim);font-size:11px;text-decoration:none;
+  padding:6px 12px;border:1px solid transparent;
+  transition:all .2s;cursor:pointer;letter-spacing:.05em;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--green);border-color:var(--border);}
+
+/* HERO */
+.hero{min-height:88vh;display:flex;align-items:center;justify-content:center;padding:4rem 2rem;position:relative;z-index:1;}
+.hero-inner{max-width:860px;width:100%;}
+.terminal-card{
+  background:rgba(0,10,0,0.8);
+  border:1px solid var(--border-bright);
+  border-radius:4px;
+  overflow:hidden;
+  box-shadow:0 0 40px rgba(0,255,65,0.08);
+}
+.terminal-header{
+  background:rgba(0,255,65,0.07);
+  border-bottom:1px solid var(--border);
+  padding:8px 14px;
+  display:flex;align-items:center;gap:8px;
+}
+.dot{width:10px;height:10px;border-radius:50%;}
+.dot.r{background:#ff5f57;}.dot.y{background:#ffbd2e;}.dot.g{background:#28c940;}
+.terminal-title{font-size:10px;color:var(--text-dim);margin-left:8px;letter-spacing:.1em;}
+.terminal-body{padding:2rem 2rem 2.5rem;}
+.cmd-line{display:flex;align-items:flex-start;gap:8px;margin-bottom:.6rem;}
+.prompt-sym{color:var(--green);user-select:none;font-size:13px;}
+.cmd-text{color:var(--text-dim);font-size:13px;}
+.output-block{margin:1.5rem 0 2rem;}
+.hero-name{font-size:clamp(28px,5vw,52px);font-weight:700;color:var(--green);letter-spacing:-.02em;line-height:1;text-shadow:0 0 30px rgba(0,255,65,0.4);}
+.hero-title{font-size:clamp(13px,2vw,18px);color:var(--amber);margin:.5rem 0 1.2rem;letter-spacing:.1em;}
+.hero-desc{font-size:13px;color:var(--text-dim);line-height:1.8;max-width:600px;}
+.hero-desc span{color:var(--cyan);}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:1.5rem 0;}
+.badge{font-size:10px;letter-spacing:.08em;padding:4px 10px;border:1px solid;border-radius:2px;}
+.badge.g{color:var(--green);border-color:rgba(0,255,65,0.3);background:rgba(0,255,65,0.05);}
+.badge.a{color:var(--amber);border-color:rgba(255,183,0,0.3);background:rgba(255,183,0,0.05);}
+.badge.c{color:var(--cyan);border-color:rgba(0,255,255,0.3);background:rgba(0,255,255,0.05);}
+.contact-line{display:flex;align-items:center;gap:8px;margin:.4rem 0;font-size:11px;}
+.contact-line .key{color:var(--text-dim);min-width:70px;}
+.contact-line .val{color:var(--green);}
+.contact-line a{color:var(--green);text-decoration:none;}
+.contact-line a:hover{text-decoration:underline;}
+.cursor{display:inline-block;width:8px;height:16px;background:var(--green);margin-left:2px;animation:blink 1s step-end infinite;vertical-align:text-bottom;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.stat-row{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem;justify-content:center;}
+.stat{text-align:center;}
+.stat .num{font-size:28px;font-weight:700;color:var(--green);line-height:1;}
+.stat .lbl{font-size:10px;color:var(--text-dim);margin-top:2px;letter-spacing:.1em;}
+.stat-sep{width:1px;background:var(--border);height:40px;align-self:center;}
+
+/* SECTIONS */
+section{position:relative;z-index:1;}
+.section-pad{padding:5rem 2rem;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-header{margin-bottom:3rem;}
+.section-header .label{font-size:10px;color:var(--text-dim);letter-spacing:.2em;margin-bottom:.5rem;}
+.section-header h2{font-size:clamp(20px,3vw,30px);color:var(--green);text-shadow:0 0 20px rgba(0,255,65,0.3);}
+.section-header .divider{height:1px;background:linear-gradient(90deg,var(--green-dim),transparent);margin-top:1rem;width:200px;}
+.alt-bg{background:rgba(0,5,0,0.5);}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;}
+.skill-cat{background:rgba(0,15,0,0.6);border:1px solid var(--border);padding:1.2rem;border-radius:2px;transition:border-color .2s;}
+.skill-cat:hover{border-color:var(--border-bright);}
+.skill-cat-name{font-size:10px;color:var(--amber);letter-spacing:.15em;margin-bottom:1rem;}
+.skill-cat-name.ai{color:var(--cyan);}
+.skill-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.skill-tag{font-size:10px;padding:3px 8px;background:rgba(0,255,65,0.06);border:1px solid rgba(0,255,65,0.15);color:var(--text-dim);transition:all .15s;}
+.skill-tag:hover{color:var(--green);border-color:var(--green-dim);}
+.skill-tag.ai{background:rgba(0,255,255,0.05);border-color:rgba(0,255,255,0.2);color:var(--cyan);}
+
+/* EXPERIENCE */
+.exp-timeline{position:relative;padding-left:2rem;}
+.exp-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--green-dim),transparent);}
+.exp-item{position:relative;margin-bottom:2.5rem;}
+.exp-item::before{content:'';position:absolute;left:-2.4rem;top:6px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:1px solid var(--green);}
+.exp-item.current::before{background:var(--green);box-shadow:0 0 8px var(--green);}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.6rem;flex-wrap:wrap;gap:.5rem;}
+.exp-role{font-size:14px;font-weight:700;color:var(--green);}
+.exp-co{font-size:12px;color:var(--amber);}
+.exp-period{font-size:10px;color:var(--text-dim);letter-spacing:.08em;padding:2px 8px;border:1px solid var(--border);}
+.exp-desc{font-size:11px;color:var(--text-dim);line-height:1.8;margin-bottom:.8rem;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.exp-tag{font-size:10px;padding:2px 7px;background:rgba(0,255,255,0.05);border:1px solid rgba(0,255,255,0.15);color:var(--cyan);}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem;}
+.project-card{
+  background:rgba(0,12,0,0.7);border:1px solid var(--border);
+  padding:1.5rem;border-radius:2px;transition:all .25s;
+  cursor:pointer;position:relative;overflow:hidden;
+  text-decoration:none;display:block;color:inherit;
+}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--green-dim),transparent);opacity:0;transition:opacity .3s;}
+.project-card:hover{border-color:var(--border-bright);transform:translateY(-2px);}
+.project-card:hover::before{opacity:1;}
+.project-num{font-size:10px;color:var(--text-dim);margin-bottom:.8rem;}
+.project-name{font-size:14px;font-weight:700;color:var(--green);margin-bottom:.5rem;line-height:1.3;}
+.project-desc{font-size:11px;color:var(--text-dim);line-height:1.8;margin-bottom:1rem;}
+.project-stack{display:flex;flex-wrap:wrap;gap:5px;}
+.project-tech{font-size:10px;padding:2px 7px;background:rgba(0,255,65,0.06);border:1px solid rgba(0,255,65,0.12);color:var(--green-dim);}
+.project-link{display:inline-flex;align-items:center;gap:4px;font-size:10px;color:var(--amber);text-decoration:none;margin-top:1rem;letter-spacing:.08em;}
+
+/* BLOG */
+.blog-grid{display:grid;gap:1rem;}
+.blog-item{
+  background:rgba(0,12,0,0.5);border:1px solid var(--border);
+  padding:1.2rem 1.5rem;border-radius:2px;
+  display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer;transition:all .2s;flex-wrap:wrap;gap:1rem;
+  text-decoration:none;color:inherit;
+}
+.blog-item:hover{border-color:var(--border-bright);padding-left:2rem;}
+.blog-title{font-size:13px;color:var(--text);font-weight:500;margin-bottom:.3rem;}
+.blog-meta{font-size:10px;color:var(--text-dim);}
+.blog-meta span{color:var(--amber);}
+.blog-arr{color:var(--green);font-size:16px;}
+.btn-link{
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;
+  padding:8px 18px;border:1px solid var(--border);background:transparent;
+  color:var(--text-dim);cursor:pointer;transition:all .2s;text-decoration:none;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.btn-link:hover{color:var(--green);border-color:var(--border-bright);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;position:relative;z-index:1;}
+footer p{font-size:10px;color:var(--text-dim);letter-spacing:.1em;}
+footer span{color:var(--green);}
+
+/* FORMATION */
+.formation-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;}
+.formation-card{background:rgba(0,15,0,0.5);border:1px solid var(--border);padding:1.2rem;border-radius:2px;}
+.formation-degree{font-size:13px;font-weight:700;color:var(--green);margin-bottom:.3rem;}
+.formation-school{font-size:11px;color:var(--amber);margin-bottom:.2rem;}
+.formation-year{font-size:10px;color:var(--text-dim);}
+
+@media(max-width:680px){
+  .exp-header{flex-direction:column;}
+  .blog-item{flex-direction:column;}
+  .nav-links a{padding:6px 8px;font-size:10px;}
+}
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="dim">root@bisri</span>
+      <span class="dim">:~$</span>
+      <span>_portfolio</span>
+    </div>
+    <div class="nav-links">
+      <a href="#about" class="active">[about]</a>
+      <a href="#skills">[skills]</a>
+      <a href="#experience">[exp]</a>
+      <a href="#projects">[projects]</a>
+      <a href="#blog">[blog]</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO / ABOUT -->
+<section class="hero" id="about">
+  <div class="hero-inner">
+    <div class="terminal-card">
+      <div class="terminal-header">
+        <div class="dot r"></div>
+        <div class="dot y"></div>
+        <div class="dot g"></div>
+        <span class="terminal-title">bisri@portfolio ~ bash</span>
+      </div>
+      <div class="terminal-body">
+        <div class="cmd-line">
+          <span class="prompt-sym">$</span>
+          <span class="cmd-text">whoami --verbose</span>
+        </div>
+        <div class="output-block">
+          <div class="hero-name">BISRI Karim</div>
+          <div class="hero-title">// DevOps & Cloud Engineer · AI Enthusiast</div>
+          <p class="hero-desc">
+            Ingénieur DevOps & Cloud avec <span>+10 ans d'expérience</span> dans la conception,
+            l'automatisation et la sécurisation d'infrastructures complexes.
+            Spécialisé dans <span>Kubernetes, Terraform, Ansible et GitLab CI/CD</span>.
+            Passionné par l'<span>IA appliquée au DevOps</span> — LLMs locaux, automatisation intelligente, on-premise.
+          </p>
+          <div class="badges">
+            <span class="badge g">Kubernetes</span>
+            <span class="badge g">Terraform</span>
+            <span class="badge g">GitLab CI/CD</span>
+            <span class="badge a">DevSecOps</span>
+            <span class="badge a">FluxCD · GitOps</span>
+            <span class="badge c">Ollama · LLM</span>
+            <span class="badge c">Casablanca, Maroc</span>
+          </div>
+        </div>
+
+        <div class="cmd-line">
+          <span class="prompt-sym">$</span>
+          <span class="cmd-text">cat contact.json</span>
+        </div>
+        <div class="output-block" style="margin-top:.8rem;">
+          <div class="contact-line">
+            <span class="key">email</span>
+            <a class="val" href="mailto:bisri.karim@gmail.com">bisri.karim@gmail.com</a>
+          </div>
+          <div class="contact-line">
+            <span class="key">phone</span>
+            <span class="val">+212 776 005 282</span>
+          </div>
+          <div class="contact-line">
+            <span class="key">github</span>
+            <a class="val" href="https://github.com/bisrikarim" target="_blank">github.com/bisrikarim</a>
+          </div>
+          <div class="contact-line">
+            <span class="key">linkedin</span>
+            <a class="val" href="https://linkedin.com/in/bisrikarim" target="_blank">linkedin.com/in/bisrikarim</a>
+          </div>
+          <div class="contact-line">
+            <span class="key">medium</span>
+            <a class="val" href="https://medium.com/@bisri.karim" target="_blank">medium.com/@bisri.karim</a>
+          </div>
+        </div>
+
+        <div class="cmd-line">
+          <span class="prompt-sym">$</span>
+          <span class="cmd-text" id="typing-cmd"></span><span class="cursor"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat"><div class="num">10+</div><div class="lbl">YRS EXP</div></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><div class="num">5+</div><div class="lbl">COMPANIES</div></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><div class="num">3</div><div class="lbl">AI PROJECTS</div></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><div class="num">50+</div><div class="lbl">TECH STACK</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section-pad alt-bg" id="skills">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">// SECTION_02</div>
+      <h2>COMPETENCES_TECHNIQUES</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <div class="skill-cat-name">CLOUD & VIRTUALISATION</div>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">VMware vSphere</span>
+          <span class="skill-tag">Proxmox VE</span>
+          <span class="skill-tag">Terraform Cloud</span>
+          <span class="skill-tag">CloudFormation</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-name">CONTAINERS & ORCHESTRATION</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Kubernetes</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Helm</span>
+          <span class="skill-tag">Traefik</span>
+          <span class="skill-tag">Kubespray</span>
+          <span class="skill-tag">K3s</span>
+          <span class="skill-tag">Harbor</span>
+          <span class="skill-tag">Podman</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-name">IaC & CONFIG MANAGEMENT</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Terraform</span>
+          <span class="skill-tag">Ansible</span>
+          <span class="skill-tag">AWX</span>
+          <span class="skill-tag">Vagrant</span>
+          <span class="skill-tag">Molecule</span>
+          <span class="skill-tag">Cloud-init</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-name">CI/CD & GitOps</div>
+        <div class="skill-tags">
+          <span class="skill-tag">GitLab CI/CD</span>
+          <span class="skill-tag">FluxCD</span>
+          <span class="skill-tag">ArgoCD</span>
+          <span class="skill-tag">Jenkins</span>
+          <span class="skill-tag">GitHub Actions</span>
+          <span class="skill-tag">Nexus</span>
+          <span class="skill-tag">Artifactory</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-name">DEVSECOPS</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Vault</span>
+          <span class="skill-tag">Trivy</span>
+          <span class="skill-tag">Gitleaks</span>
+          <span class="skill-tag">SonarQube</span>
+          <span class="skill-tag">DefectDojo</span>
+          <span class="skill-tag">Keycloak</span>
+          <span class="skill-tag">SBOM</span>
+          <span class="skill-tag">SecurityHub</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-name">OBSERVABILITE & MONITORING</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Prometheus</span>
+          <span class="skill-tag">Grafana</span>
+          <span class="skill-tag">ELK</span>
+          <span class="skill-tag">Loki</span>
+          <span class="skill-tag">Alertmanager</span>
+          <span class="skill-tag">CloudWatch</span>
+          <span class="skill-tag">Centreon</span>
+          <span class="skill-tag">Zabbix</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-name">SCRIPTING & DEVELOPPEMENT</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Bash</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Go</span>
+          <span class="skill-tag">Perl</span>
+          <span class="skill-tag">REST API</span>
+          <span class="skill-tag">JSON/YAML</span>
+          <span class="skill-tag">Git Hooks</span>
+        </div>
+      </div>
+      <div class="skill-cat" style="border-color:rgba(0,255,255,0.25);">
+        <div class="skill-cat-name ai">IA & LLM (PROJETS PERSO)</div>
+        <div class="skill-tags">
+          <span class="skill-tag ai">Ollama</span>
+          <span class="skill-tag ai">Qwen2.5-Coder</span>
+          <span class="skill-tag ai">Mistral 7B</span>
+          <span class="skill-tag ai">n8n</span>
+          <span class="skill-tag ai">Prompt Engineering</span>
+          <span class="skill-tag ai">LLM on-premise</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section-pad" id="experience">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">// SECTION_03</div>
+      <h2>EXPERIENCE_PROFESSIONNELLE</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="exp-timeline">
+
+      <div class="exp-item current">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Ingénieur DevOps</div>
+            <div class="exp-co">Sofrecom</div>
+          </div>
+          <span class="exp-period">JAN 2024 → PRÉSENT</span>
+        </div>
+        <p class="exp-desc">
+          Automatisation du déploiement de plateformes Ansible AWX via Terraform, Kubernetes et Helm sur environnements hybrides. Pipeline DevSecOps complet (Trivy, SonarQube, Gitleaks, SBOM, Vault, DefectDojo). GitOps multi-clusters via FluxCD (staging / hors-prod / production). Migration et montée de version de clusters Kubernetes (Kubespray). Supervision centralisée ELK, Prometheus, Grafana, Loki, Alertmanager avec alerting Slack/Teams.
+        </p>
+        <div class="exp-tags">
+          <span class="exp-tag">AWS</span>
+          <span class="exp-tag">Kubernetes</span>
+          <span class="exp-tag">Terraform</span>
+          <span class="exp-tag">Helm</span>
+          <span class="exp-tag">FluxCD</span>
+          <span class="exp-tag">AWX</span>
+          <span class="exp-tag">GitLab CI/CD</span>
+          <span class="exp-tag">Vault</span>
+          <span class="exp-tag">Traefik</span>
+          <span class="exp-tag">ELK</span>
+          <span class="exp-tag">Grafana</span>
+          <span class="exp-tag">Keycloak</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Ingénieur DevOps (Freelance)</div>
+            <div class="exp-co">Intelcia</div>
+          </div>
+          <span class="exp-period">JAN 2023 → DÉC 2023</span>
+        </div>
+        <p class="exp-desc">
+          Conception d'environnements pour applications métiers internes. Pipelines GitLab CI/CD pour déploiement automatique de microservices Kubernetes. Intégration Apache Airflow pour orchestration de workflows métiers. Supervision temps réel via Grafana & Prometheus. Standardisation via Helm Charts & Ansible Roles.
+        </p>
+        <div class="exp-tags">
+          <span class="exp-tag">Kubernetes</span>
+          <span class="exp-tag">Helm</span>
+          <span class="exp-tag">Jenkins</span>
+          <span class="exp-tag">Airflow</span>
+          <span class="exp-tag">Grafana</span>
+          <span class="exp-tag">Ansible</span>
+          <span class="exp-tag">GitLab</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Ingénieur de Production DevOps</div>
+            <div class="exp-co">Sofrecom</div>
+          </div>
+          <span class="exp-period">MAR 2019 → DÉC 2022</span>
+        </div>
+        <p class="exp-desc">
+          Migration des pipelines Jenkins → GitLab CI/CD. Gestion d'infrastructure hybride via GitLab + Terraform + Ansible. Docker Swarm. Formation des équipes MOE et exploitants sur One Automation. Gestion des incidents et changements opérationnels.
+        </p>
+        <div class="exp-tags">
+          <span class="exp-tag">GitLab</span>
+          <span class="exp-tag">Ansible</span>
+          <span class="exp-tag">Docker Swarm</span>
+          <span class="exp-tag">Terraform</span>
+          <span class="exp-tag">Jenkins</span>
+          <span class="exp-tag">One Automation</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Ingénieur de Production</div>
+            <div class="exp-co">Capgemini</div>
+          </div>
+          <span class="exp-period">AOÛ 2018 → FÉV 2019</span>
+        </div>
+        <p class="exp-desc">
+          Haute disponibilité des applications et respect des SLA. Gestion des jobs via CA Autosys. Automatisation des tâches récurrentes via scripts industrialisés.
+        </p>
+        <div class="exp-tags">
+          <span class="exp-tag">Autosys</span>
+          <span class="exp-tag">NetBackup</span>
+          <span class="exp-tag">SQL Server</span>
+          <span class="exp-tag">Shell</span>
+          <span class="exp-tag">Perl</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Pilote d'Exploitation</div>
+            <div class="exp-co">Docapost</div>
+          </div>
+          <span class="exp-period">JAN 2014 → SEP 2018</span>
+        </div>
+        <p class="exp-desc">
+          Diagnostic et traitement des alertes/incidents N0, N1 et N2. Administration systèmes Windows/Linux. Rédaction et mise à jour des documents techniques d'exploitation.
+        </p>
+        <div class="exp-tags">
+          <span class="exp-tag">Zabbix</span>
+          <span class="exp-tag">Nagios</span>
+          <span class="exp-tag">Centreon</span>
+          <span class="exp-tag">Linux</span>
+          <span class="exp-tag">Shell</span>
+          <span class="exp-tag">Windows Server</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section-pad alt-bg" id="projects">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">// SECTION_04</div>
+      <h2>PROJETS_IA</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="projects-grid">
+
+      <a class="project-card" href="https://medium.com/@bisri.karim" target="_blank">
+        <div class="project-num">PROJECT_01 · FÉV 2026</div>
+        <div class="project-name">AI-Powered Code Review System</div>
+        <div class="project-desc">
+          Système de revue de code automatisée intégré à GitLab CI/CD, utilisant Ollama & Qwen2.5-Coder. Analyse chaque Merge Request et poste automatiquement une revue détaillée — 100% on-premise, sans API cloud.
+        </div>
+        <div class="project-stack">
+          <span class="project-tech">GitLab CI/CD</span>
+          <span class="project-tech">Docker</span>
+          <span class="project-tech">Ollama</span>
+          <span class="project-tech">Qwen2.5-Coder</span>
+          <span class="project-tech">GitLab API</span>
+        </div>
+        <div class="project-link">→ Read on Medium</div>
+      </a>
+
+      <a class="project-card" href="https://medium.com/@bisri.karim" target="_blank">
+        <div class="project-num">PROJECT_02 · FÉV 2026</div>
+        <div class="project-name">AI Log Analyzer — n8n + Ollama + Gmail</div>
+        <div class="project-desc">
+          Workflow d'analyse automatique de logs serveur (CSV) par IA. n8n orchestre la lecture, le parsing et l'envoi à Mistral 7B pour générer un rapport email — entièrement local, aucune donnée dans le cloud.
+        </div>
+        <div class="project-stack">
+          <span class="project-tech">n8n</span>
+          <span class="project-tech">Ollama</span>
+          <span class="project-tech">Mistral 7B</span>
+          <span class="project-tech">Gmail SMTP</span>
+          <span class="project-tech">Ubuntu VM</span>
+          <span class="project-tech">Vagrant</span>
+        </div>
+        <div class="project-link">→ Read on Medium</div>
+      </a>
+
+      <a class="project-card" href="https://github.com/bisrikarim/aicommit-poc" target="_blank">
+        <div class="project-num">PROJECT_03 · FÉV 2026</div>
+        <div class="project-name">aicommit — AI Commit Message Generator</div>
+        <div class="project-desc">
+          Outil CLI basé sur Ollama + Qwen2.5-Coder qui génère automatiquement des messages de commit au format Conventional Commits en analysant le git diff. 100% gratuit, offline, opérationnel en 10 min.
+        </div>
+        <div class="project-stack">
+          <span class="project-tech">Python</span>
+          <span class="project-tech">Ollama</span>
+          <span class="project-tech">Qwen2.5-Coder</span>
+          <span class="project-tech">Git</span>
+        </div>
+        <div class="project-link">→ github.com/bisrikarim/aicommit-poc</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="section-pad" id="blog">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">// SECTION_05</div>
+      <h2>TECH_BLOG</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="blog-grid">
+      <a class="blog-item" href="https://medium.com/@bisri.karim" target="_blank">
+        <div>
+          <div class="blog-title">Building an AI-Powered Code Review System with GitLab CI/CD & Ollama</div>
+          <div class="blog-meta">Medium · <span>Fév 2026</span> · DevOps · AI · GitLab</div>
+        </div>
+        <span class="blog-arr">→</span>
+      </a>
+      <a class="blog-item" href="https://medium.com/@bisri.karim" target="_blank">
+        <div>
+          <div class="blog-title">AI-Powered Server Log Analyzer avec n8n, Ollama & Gmail</div>
+          <div class="blog-meta">Medium · <span>Fév 2026</span> · Automation · LLM · n8n</div>
+        </div>
+        <span class="blog-arr">→</span>
+      </a>
+      <a class="blog-item" href="https://medium.com/@bisri.karim" target="_blank">
+        <div>
+          <div class="blog-title">Stop Writing Commit Messages — Let AI Do It For You</div>
+          <div class="blog-meta">Medium · <span>Fév 2026</span> · Python · Ollama · Git</div>
+        </div>
+        <span class="blog-arr">→</span>
+      </a>
+    </div>
+    <div style="margin-top:1.5rem;text-align:center;">
+      <a class="btn-link" href="https://medium.com/@bisri.karim" target="_blank">→ Voir tous les articles sur Medium</a>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATION -->
+<section class="section-pad alt-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="label">// SECTION_06</div>
+      <h2>FORMATION</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="formation-grid">
+      <div class="formation-card">
+        <div class="formation-degree">Ingénieur en MIAGE</div>
+        <div class="formation-school">EMSI Casablanca</div>
+        <div class="formation-year">2012 – 2016</div>
+      </div>
+      <div class="formation-card">
+        <div class="formation-degree">Technicien Spécialisé en Développement Informatique</div>
+        <div class="formation-school">OFPPT NTIC Sidi Maârouf</div>
+        <div class="formation-year">2010 – 2012</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><span>BISRI Karim</span> · DevOps & Cloud Engineer · Casablanca, Maroc</p>
+  <p style="margin-top:.5rem;"><a href="mailto:bisri.karim@gmail.com" style="color:var(--green);text-decoration:none;">bisri.karim@gmail.com</a> · <a href="https://github.com/bisrikarim" target="_blank" style="color:var(--green);text-decoration:none;">GitHub</a> · <a href="https://linkedin.com/in/bisrikarim" target="_blank" style="color:var(--green);text-decoration:none;">LinkedIn</a></p>
+</footer>
+
+<script>
+const cmds = [
+  'ls projects/ --ai-powered',
+  'kubectl get pods -n production',
+  'terraform plan --out=infra.tfplan',
+  'docker ps --filter status=running',
+  'git log --oneline --graph --all',
+  'ansible-playbook deploy.yml -i inventory',
+];
+let ci=0, ci2=0;
+function typeCmd(){
+  const el=document.getElementById('typing-cmd');
+  const cmd=cmds[ci%cmds.length];
+  if(ci2<cmd.length){
+    el.textContent+=cmd[ci2++];
+    setTimeout(typeCmd,70+Math.random()*30);
+  } else {
+    setTimeout(()=>{
+      let d=cmd.length;
+      (function del(){if(d-->0){el.textContent=cmd.slice(0,d);setTimeout(del,25);}else{ci++;ci2=0;setTimeout(typeCmd,600);}})();
+    },2200);
+  }
+}
+setTimeout(typeCmd,1000);
+
+// Active nav on scroll
+const sections=['about','skills','experience','projects','blog'];
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&el.getBoundingClientRect().top<=80)cur=id;
+  });
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.toggle('active',a.getAttribute('href')==='#'+cur);
+  });
+});
+</script>
+</body>
+</html>
