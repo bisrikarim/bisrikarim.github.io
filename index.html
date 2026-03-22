@@ -22,6 +22,11 @@
   --cyan:#00ffff;
 }
 html{scroll-behavior:smooth;}
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:rgba(0,255,65,0.03);}
+::-webkit-scrollbar-thumb{background:var(--green);border-radius:0;}
+::-webkit-scrollbar-thumb:hover{background:var(--green-dim);}
+*{scrollbar-width:thin;scrollbar-color:var(--green) rgba(0,255,65,0.03);}
 body{
   font-family:'JetBrains Mono',monospace;
   background:var(--bg);
