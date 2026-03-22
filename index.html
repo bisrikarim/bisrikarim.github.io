@@ -593,133 +593,162 @@ footer span{color:var(--green);}
       <h2>EXPERIENCE_PROFESSIONNELLE</h2>
       <div class="divider"></div>
     </div>
-    <div class="exp-timeline">
+    <div class="tl-wrap">
 
-      <div class="exp-item current">
-        <div class="exp-header">
-          <div>
-            <div class="exp-role">Ingénieur DevOps</div>
-            <div class="exp-co">Sofrecom</div>
+      <!-- ITEM 1 — Sofrecom actuel -->
+      <div class="tl-item current">
+        <div class="tl-card-wrap">
+          <div class="tl-card open" onclick="toggleCard(this)">
+            <div class="tl-card-header">
+              <div class="tl-role">Ingénieur DevOps</div>
+              <div class="tl-co">Sofrecom</div>
+              <div class="tl-meta">
+                <span class="tl-period">JAN 2024 → PRÉSENT</span>
+                <span class="tl-current-badge">● EN POSTE</span>
+              </div>
+              <div class="tl-toggle"><span class="arr">▸</span> cliquer pour détails</div>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-card-body-inner">
+                <div class="tl-task">Conception et automatisation du déploiement on-demand d'AWX via Terraform, Kubernetes et Helm — provisionnement réduit de plusieurs jours à moins d'une heure.</div>
+                <div class="tl-task">GitOps multi-clusters via FluxCD (staging / hors-prod / production) avec rollbacks automatisés et déploiements déclaratifs à grande échelle.</div>
+                <div class="tl-task">Pipeline DevSecOps bout-en-bout : Trivy, SonarQube, Gitleaks, SBOM, Vault, DefectDojo — détection automatique des vulnérabilités avant chaque déploiement.</div>
+                <div class="tl-task">Migration clusters Kubernetes via Kubespray (AWX Operator 2.7.6 → 2.19.1) sans interruption de service via rolling update maîtrisée.</div>
+                <div class="tl-task">Supervision centralisée ELK + Prometheus + Grafana + Loki avec alerting multi-niveaux Slack/Teams et archivage S3 longue durée.</div>
+                <div class="tl-tags">
+                  <span class="tl-tag">AWS</span><span class="tl-tag">Kubernetes</span><span class="tl-tag">Terraform</span>
+                  <span class="tl-tag">Helm</span><span class="tl-tag">FluxCD</span><span class="tl-tag">AWX</span>
+                  <span class="tl-tag">GitLab CI/CD</span><span class="tl-tag">Vault</span><span class="tl-tag">Traefik</span>
+                  <span class="tl-tag">ELK</span><span class="tl-tag">Grafana</span><span class="tl-tag">Keycloak</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <span class="exp-period">JAN 2024 → PRÉSENT</span>
         </div>
-        <p class="exp-desc">
-          • Conception et automatisation du déploiement on-demand de plateformes Ansible AWX via Terraform, Kubernetes et Helm sur environnements hybrides — réduisant le temps de provisionnement de plusieurs jours à moins d'une heure.<br>
-          • Mise en place d'une approche GitOps multi-clusters avec FluxCD couvrant staging, hors-prod et production, avec rollbacks automatisés et déploiements déclaratifs garantissant la cohérence des configurations à grande échelle.<br>
-          • Implémentation d'un pipeline DevSecOps bout-en-bout intégrant Trivy, SonarQube, Gitleaks, SBOM et DefectDojo pour la détection automatique des vulnérabilités avant chaque déploiement.<br>
-          • Chiffrement centralisé des secrets via HashiCorp Vault avec rotation automatique et intégration native GitLab CI/CD.<br>
-          • Migration et upgrade de clusters Kubernetes via Kubespray (AWX Operator 2.7.6 → 2.19.1) sans interruption de service grâce à une stratégie de rolling update maîtrisée.<br>
-          • Supervision centralisée ELK + Prometheus + Grafana + Loki avec alerting multi-niveaux Slack/Teams et archivage long terme sur S3.
-        </p>
-        <div class="exp-tags">
-          <span class="exp-tag">AWS</span>
-          <span class="exp-tag">Kubernetes</span>
-          <span class="exp-tag">Terraform</span>
-          <span class="exp-tag">Helm</span>
-          <span class="exp-tag">FluxCD</span>
-          <span class="exp-tag">AWX</span>
-          <span class="exp-tag">GitLab CI/CD</span>
-          <span class="exp-tag">Vault</span>
-          <span class="exp-tag">Traefik</span>
-          <span class="exp-tag">ELK</span>
-          <span class="exp-tag">Grafana</span>
-          <span class="exp-tag">Keycloak</span>
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div style="flex:1;"></div>
+      </div>
+
+      <!-- ITEM 2 — Intelcia -->
+      <div class="tl-item">
+        <div style="flex:1;"></div>
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div class="tl-card-wrap">
+          <div class="tl-card" onclick="toggleCard(this)">
+            <div class="tl-card-header">
+              <div class="tl-role">Ingénieur DevOps (Freelance)</div>
+              <div class="tl-co">Intelcia</div>
+              <div class="tl-meta">
+                <span class="tl-period">JAN 2023 → DÉC 2023</span>
+              </div>
+              <div class="tl-toggle"><span class="arr">▸</span> cliquer pour détails</div>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-card-body-inner">
+                <div class="tl-task">Conception d'environnements pour applications métiers critiques avec isolation réseau et gestion fine des accès.</div>
+                <div class="tl-task">Pipelines GitLab CI/CD pour déploiement automatique de microservices Kubernetes avec tests d'intégration et gates qualité.</div>
+                <div class="tl-task">Intégration Apache Airflow pour orchestration de workflows complexes avec scheduling, retry automatique et monitoring des DAGs.</div>
+                <div class="tl-task">Standardisation via Helm Charts &amp; Ansible Roles réutilisables — réduction du temps de déploiement de 70%.</div>
+                <div class="tl-task">Supervision temps réel Grafana &amp; Prometheus avec dashboards métiers personnalisés et alerting proactif.</div>
+                <div class="tl-tags">
+                  <span class="tl-tag">Kubernetes</span><span class="tl-tag">Helm</span><span class="tl-tag">Jenkins</span>
+                  <span class="tl-tag">Airflow</span><span class="tl-tag">Grafana</span><span class="tl-tag">Ansible</span><span class="tl-tag">GitLab</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="exp-item">
-        <div class="exp-header">
-          <div>
-            <div class="exp-role">Ingénieur DevOps (Freelance)</div>
-            <div class="exp-co">Intelcia</div>
+      <!-- ITEM 3 — Sofrecom 2019 -->
+      <div class="tl-item">
+        <div class="tl-card-wrap">
+          <div class="tl-card" onclick="toggleCard(this)">
+            <div class="tl-card-header">
+              <div class="tl-role">Ingénieur de Production DevOps</div>
+              <div class="tl-co">Sofrecom</div>
+              <div class="tl-meta">
+                <span class="tl-period">MAR 2019 → DÉC 2022</span>
+              </div>
+              <div class="tl-toggle"><span class="arr">▸</span> cliquer pour détails</div>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-card-body-inner">
+                <div class="tl-task">Migration complète Jenkins → GitLab CI/CD — visibilité améliorée et temps de build réduits de 40%.</div>
+                <div class="tl-task">Infrastructure hybride GitLab + Terraform + Ansible avec versioning IaC et revue systématique des changements.</div>
+                <div class="tl-task">Déploiement et administration de clusters Docker Swarm pour applications containerisées en production.</div>
+                <div class="tl-task">Formation équipes MOE et exploitants sur One Automation. Documentation technique complète.</div>
+                <div class="tl-task">Gestion incidents P1/P2 avec coordination des équipes — taux de disponibilité maintenu à 99.5%.</div>
+                <div class="tl-tags">
+                  <span class="tl-tag">GitLab</span><span class="tl-tag">Ansible</span><span class="tl-tag">Docker Swarm</span>
+                  <span class="tl-tag">Terraform</span><span class="tl-tag">Jenkins</span><span class="tl-tag">One Automation</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <span class="exp-period">JAN 2023 → DÉC 2023</span>
         </div>
-        <p class="exp-desc">
-          Conception d'environnements pour applications métiers internes. Pipelines GitLab CI/CD pour déploiement automatique de microservices Kubernetes. Intégration Apache Airflow pour orchestration de workflows métiers. Supervision temps réel via Grafana & Prometheus. Standardisation via Helm Charts & Ansible Roles.
-        </p>
-        <div class="exp-tags">
-          <span class="exp-tag">Kubernetes</span>
-          <span class="exp-tag">Helm</span>
-          <span class="exp-tag">Jenkins</span>
-          <span class="exp-tag">Airflow</span>
-          <span class="exp-tag">Grafana</span>
-          <span class="exp-tag">Ansible</span>
-          <span class="exp-tag">GitLab</span>
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div style="flex:1;"></div>
+      </div>
+
+      <!-- ITEM 4 — Capgemini -->
+      <div class="tl-item">
+        <div style="flex:1;"></div>
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div class="tl-card-wrap">
+          <div class="tl-card" onclick="toggleCard(this)">
+            <div class="tl-card-header">
+              <div class="tl-role">Ingénieur de Production</div>
+              <div class="tl-co">Capgemini</div>
+              <div class="tl-meta">
+                <span class="tl-period">AOÛ 2018 → FÉV 2019</span>
+              </div>
+              <div class="tl-toggle"><span class="arr">▸</span> cliquer pour détails</div>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-card-body-inner">
+                <div class="tl-task">Haute disponibilité des applications critiques clients — SLA contractuels &gt; 99.9% respectés.</div>
+                <div class="tl-task">Gestion et supervision des jobs batch via CA Autosys avec analyse des dépendances et résolution des incidents.</div>
+                <div class="tl-task">Scripts Shell et Perl pour automatisation des tâches récurrentes — réduction des interventions manuelles de 60%.</div>
+                <div class="tl-task">Gestion des sauvegardes NetBackup et Avamar avec tests réguliers de restauration.</div>
+                <div class="tl-tags">
+                  <span class="tl-tag">Autosys</span><span class="tl-tag">NetBackup</span>
+                  <span class="tl-tag">SQL Server</span><span class="tl-tag">Shell</span><span class="tl-tag">Perl</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="exp-item">
-        <div class="exp-header">
-          <div>
-            <div class="exp-role">Ingénieur de Production DevOps</div>
-            <div class="exp-co">Sofrecom</div>
+      <!-- ITEM 5 — Docapost -->
+      <div class="tl-item">
+        <div class="tl-card-wrap">
+          <div class="tl-card" onclick="toggleCard(this)">
+            <div class="tl-card-header">
+              <div class="tl-role">Pilote d'Exploitation</div>
+              <div class="tl-co">Docapost</div>
+              <div class="tl-meta">
+                <span class="tl-period">JAN 2014 → SEP 2018</span>
+              </div>
+              <div class="tl-toggle"><span class="arr">▸</span> cliquer pour détails</div>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-card-body-inner">
+                <div class="tl-task">Supervision 24/7 et traitement des alertes/incidents N0, N1, N2 avec priorisation, escalade et suivi jusqu'à résolution.</div>
+                <div class="tl-task">Administration systèmes Windows Server 2008/2012 et GNU/Linux avec gestion des patches et mises à jour de sécurité.</div>
+                <div class="tl-task">Surveillance proactive via Zabbix, Nagios et Centreon — checks personnalisés et réduction des fausses alertes.</div>
+                <div class="tl-task">Transferts critiques via CFT/Gateway XFB. Rédaction et maintien des runbooks et procédures d'astreinte.</div>
+                <div class="tl-tags">
+                  <span class="tl-tag">Zabbix</span><span class="tl-tag">Nagios</span><span class="tl-tag">Centreon</span>
+                  <span class="tl-tag">Linux</span><span class="tl-tag">Shell</span><span class="tl-tag">Windows Server</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <span class="exp-period">MAR 2019 → DÉC 2022</span>
         </div>
-        <p class="exp-desc">
-          • Pilotage de la migration complète des pipelines CI/CD de Jenkins vers GitLab CI/CD, améliorant la visibilité et réduisant les temps de build de 40%.<br>
-          • Mise en place et gestion d'une infrastructure hybride via GitLab + Terraform + Ansible avec versioning de l'infrastructure as code et revue systématique des changements.<br>
-          • Déploiement et administration de clusters Docker Swarm pour les applications containerisées en production.<br>
-          • Formation et montée en compétences des équipes MOE et exploitants sur One Automation avec rédaction de documentation technique complète.<br>
-          • Gestion proactive des incidents P1/P2 avec coordination des équipes et respect des SLA — taux de disponibilité maintenu à 99.5%.
-        </p>
-        <div class="exp-tags">
-          <span class="exp-tag">GitLab</span>
-          <span class="exp-tag">Ansible</span>
-          <span class="exp-tag">Docker Swarm</span>
-          <span class="exp-tag">Terraform</span>
-          <span class="exp-tag">Jenkins</span>
-          <span class="exp-tag">One Automation</span>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div>
-            <div class="exp-role">Ingénieur de Production</div>
-            <div class="exp-co">Capgemini</div>
-          </div>
-          <span class="exp-period">AOÛ 2018 → FÉV 2019</span>
-        </div>
-        <p class="exp-desc">
-          • Garantie de la haute disponibilité des applications critiques clients avec respect strict des SLA contractuels (disponibilité &gt; 99.9%).<br>
-          • Gestion et supervision de l'exécution des jobs batch via CA Autosys avec analyse des dépendances et résolution des incidents de planification.<br>
-          • Développement de scripts Shell et Perl pour l'automatisation des tâches récurrentes (reporting, purges, transferts de fichiers), réduisant les interventions manuelles de 60%.<br>
-          • Gestion des sauvegardes avec NetBackup et Avamar et tests réguliers de restauration.
-        </p>
-        <div class="exp-tags">
-          <span class="exp-tag">Autosys</span>
-          <span class="exp-tag">NetBackup</span>
-          <span class="exp-tag">SQL Server</span>
-          <span class="exp-tag">Shell</span>
-          <span class="exp-tag">Perl</span>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <div>
-            <div class="exp-role">Pilote d'Exploitation</div>
-            <div class="exp-co">Docapost</div>
-          </div>
-          <span class="exp-period">JAN 2014 → SEP 2018</span>
-        </div>
-        <p class="exp-desc">
-          • Supervision 24/7 et traitement des alertes/incidents de niveaux N0, N1 et N2 avec priorisation, escalade et suivi jusqu'à résolution.<br>
-          • Administration des systèmes Windows Server 2008/2012 et GNU/Linux avec gestion des patches et mises à jour de sécurité.<br>
-          • Surveillance proactive via Zabbix, Nagios et Centreon avec création de checks personnalisés et réduction du taux de fausses alertes.<br>
-          • Gestion des transferts de fichiers critiques via CFT/Gateway XFB pour les échanges inter-entreprises.<br>
-          • Rédaction et maintien à jour de la documentation technique d'exploitation, des runbooks et des procédures d'astreinte.
-        </p>
-        <div class="exp-tags">
-          <span class="exp-tag">Zabbix</span>
-          <span class="exp-tag">Nagios</span>
-          <span class="exp-tag">Centreon</span>
-          <span class="exp-tag">Linux</span>
-          <span class="exp-tag">Shell</span>
-          <span class="exp-tag">Windows Server</span>
-        </div>
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div style="flex:1;"></div>
       </div>
 
     </div>
