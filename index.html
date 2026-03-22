@@ -85,7 +85,7 @@ nav{
 .prompt-sym{color:var(--green);user-select:none;font-size:13px;}
 .cmd-text{color:var(--text-dim);font-size:13px;}
 .output-block{margin:1.5rem 0 2rem;}
-.hero-name{font-size:clamp(28px,5vw,52px);font-weight:700;color:var(--green);letter-spacing:-.02em;line-height:1;text-shadow:0 0 30px rgba(0,255,65,0.4);}
+
 .hero-title{font-size:clamp(13px,2vw,18px);color:var(--amber);margin:.5rem 0 1.2rem;letter-spacing:.1em;}
 .hero-desc{font-size:13px;color:#c8ffd4;line-height:1.8;max-width:100%;}
 .hero-desc span{color:var(--cyan);}
@@ -101,6 +101,19 @@ nav{
 .contact-line a:hover{text-decoration:underline;}
 .cursor{display:inline-block;width:8px;height:16px;background:var(--green);margin-left:2px;animation:blink 1s step-end infinite;vertical-align:text-bottom;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes glitch{
+  0%,90%,100%{transform:none;text-shadow:0 0 30px rgba(0,255,65,0.4);}
+  91%{transform:translate(-2px,0);text-shadow:-2px 0 #ff0040,2px 0 #00ffff;}
+  93%{transform:translate(2px,0);text-shadow:2px 0 #ff0040,-2px 0 #00ffff;}
+  95%{transform:translate(-1px,0);text-shadow:-1px 0 #ff0040,1px 0 #00ffff;}
+  97%{transform:none;text-shadow:0 0 30px rgba(0,255,65,0.4);}
+}
+.hero-name{font-size:clamp(28px,5vw,52px);font-weight:700;color:var(--green);letter-spacing:-.02em;line-height:1;animation:glitch 8s infinite;}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+*{cursor:none!important;}
+.custom-cursor{position:fixed;width:14px;height:18px;background:var(--green);pointer-events:none;z-index:99999;transform:translateY(-2px);opacity:.85;}
+.skill-tag:hover{color:var(--green);border-color:var(--green-dim);box-shadow:0 0 8px rgba(0,255,65,0.3),inset 0 0 8px rgba(0,255,65,0.05);}
 .stat-row{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem;justify-content:center;}
 .stat{text-align:center;}
 .stat .num{font-size:28px;font-weight:700;color:var(--green);line-height:1;}
@@ -221,6 +234,7 @@ footer span{color:var(--green);}
     </div>
   </div>
 </nav>
+<div id="progress-bar" style="position:fixed;top:52px;left:0;height:2px;width:0%;background:var(--green);z-index:200;transition:width .1s linear;box-shadow:0 0 8px var(--green);"></div>
 
 <!-- HERO / ABOUT -->
 <section class="hero" id="about">
@@ -292,20 +306,20 @@ footer span{color:var(--green);}
     </div>
 
     <div class="stat-row">
-      <div class="stat"><div class="num">10+</div><div class="lbl">YRS EXP</div></div>
+      <div class="stat"><div class="num" data-target="10" data-suffix="+">0</div><div class="lbl">YRS EXP</div></div>
       <div class="stat-sep"></div>
-      <div class="stat"><div class="num">5+</div><div class="lbl">COMPANIES</div></div>
+      <div class="stat"><div class="num" data-target="5" data-suffix="+">0</div><div class="lbl">COMPANIES</div></div>
       <div class="stat-sep"></div>
-      <div class="stat"><div class="num">3</div><div class="lbl">AI PROJECTS</div></div>
+      <div class="stat"><div class="num" data-target="3" data-suffix="">0</div><div class="lbl">AI PROJECTS</div></div>
       <div class="stat-sep"></div>
-      <div class="stat"><div class="num">50+</div><div class="lbl">TECH STACK</div></div>
+      <div class="stat"><div class="num" data-target="50" data-suffix="+">0</div><div class="lbl">TECH STACK</div></div>
     </div>
   </div>
 </section>
 
 <!-- SKILLS -->
 <section class="section-pad alt-bg" id="skills">
-  <div class="section-inner">
+  <div class="section-inner fade-in">
     <div class="section-header">
       <div class="label">// SECTION_02</div>
       <h2>COMPETENCES_TECHNIQUES</h2>
@@ -413,7 +427,7 @@ footer span{color:var(--green);}
 
 <!-- EXPERIENCE -->
 <section class="section-pad" id="experience">
-  <div class="section-inner">
+  <div class="section-inner fade-in">
     <div class="section-header">
       <div class="label">// SECTION_03</div>
       <h2>EXPERIENCE_PROFESSIONNELLE</h2>
@@ -554,7 +568,7 @@ footer span{color:var(--green);}
 
 <!-- PROJECTS -->
 <section class="section-pad alt-bg" id="projects">
-  <div class="section-inner">
+  <div class="section-inner fade-in">
     <div class="section-header">
       <div class="label">// SECTION_04</div>
       <h2>PROJETS_IA</h2>
@@ -616,7 +630,7 @@ footer span{color:var(--green);}
 
 <!-- BLOG -->
 <section class="section-pad" id="blog">
-  <div class="section-inner">
+  <div class="section-inner fade-in">
     <div class="section-header">
       <div class="label">// SECTION_05</div>
       <h2>TECH_BLOG</h2>
@@ -653,7 +667,7 @@ footer span{color:var(--green);}
 
 <!-- FORMATION -->
 <section class="section-pad alt-bg">
-  <div class="section-inner">
+  <div class="section-inner fade-in">
     <div class="section-header">
       <div class="label">// SECTION_06</div>
       <h2>FORMATION</h2>
@@ -679,7 +693,8 @@ footer span{color:var(--green);}
   <p style="margin-top:.5rem;"><a href="/cdn-cgi/l/email-protection#47252e34352e692c26352e2a07202a262e2b6924282a" style="color:var(--green);text-decoration:none;"><span class="__cf_email__" data-cfemail="80e2e9f3f2e9aeebe1f2e9edc0e7ede1e9ecaee3efed">[email&#160;protected]</span></a> · <a href="https://github.com/bisrikarim" target="_blank" style="color:var(--green);text-decoration:none;">GitHub</a> · <a href="https://linkedin.com/in/bisrikarim" target="_blank" style="color:var(--green);text-decoration:none;">LinkedIn</a></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><div class="custom-cursor" id="cursor"></div>
+<script>
 const cmds = [
   'ls projects/ --ai-powered',
   'kubectl get pods -n production',
@@ -716,6 +731,50 @@ window.addEventListener('scroll',()=>{
     a.classList.toggle('active',a.getAttribute('href')==='#'+cur);
   });
 });
+</script>
+<script>
+// Custom cursor
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top  = e.clientY + 'px';
+});
+document.addEventListener('mouseleave', () => cur.style.opacity = '0');
+document.addEventListener('mouseenter', () => cur.style.opacity = '.85');
+
+// Progress bar
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+// Fade-in on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Animated counters
+let counted = false;
+const statObserver = new IntersectionObserver(entries => {
+  if(entries[0].isIntersecting && !counted) {
+    counted = true;
+    document.querySelectorAll('.num[data-target]').forEach(el => {
+      const target = +el.dataset.target;
+      const suffix = el.dataset.suffix || '';
+      let current = 0;
+      const step = Math.ceil(target / 40);
+      const timer = setInterval(() => {
+        current += step;
+        if(current >= target) { current = target; clearInterval(timer); }
+        el.textContent = current + suffix;
+      }, 40);
+    });
+  }
+}, {threshold: 0.5});
+const statRow = document.querySelector('.stat-row');
+if(statRow) statObserver.observe(statRow);
 </script>
 </body>
 </html>
