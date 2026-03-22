@@ -178,35 +178,34 @@ section{position:relative;z-index:1;}
 .tl-item{
   display:grid;
   grid-template-columns:1fr 24px 1fr;
-  gap:0;
-  margin-bottom:1.5rem;
-  align-items:flex-start;
+  margin-bottom:2rem;
+  align-items:start;
 }
-.tl-left-col{display:flex;justify-content:flex-end;padding-right:1.5rem;}
-.tl-right-col{display:flex;justify-content:flex-start;padding-left:1.5rem;}
-.tl-empty{display:block;}
-.tl-dot-col{
-  display:flex;flex-direction:column;align-items:center;
-  padding-top:14px;position:relative;z-index:2;
-}
+.tl-left{display:flex;justify-content:flex-end;padding-right:1.5rem;}
+.tl-right{display:flex;justify-content:flex-start;padding-left:1.5rem;}
+.tl-mid{display:flex;justify-content:center;padding-top:14px;position:relative;z-index:2;}
 .tl-dot{
-  width:12px;height:12px;border-radius:50%;
+  width:12px;height:12px;border-radius:50%;flex-shrink:0;
   background:var(--bg);border:1.5px solid var(--green);
-  transition:all .3s;flex-shrink:0;
+  transition:all .3s;
 }
 .tl-item.current .tl-dot{
   background:var(--green);
   box-shadow:0 0 10px var(--green),0 0 20px rgba(0,255,65,0.3);
   animation:pulse-dot 2s ease-in-out infinite;
 }
-@keyframes pulse-dot{0%,100%{box-shadow:0 0 10px var(--green),0 0 20px rgba(0,255,65,0.3);}50%{box-shadow:0 0 16px var(--green),0 0 32px rgba(0,255,65,0.5);}}
+@keyframes pulse-dot{
+  0%,100%{box-shadow:0 0 10px var(--green),0 0 20px rgba(0,255,65,0.3);}
+  50%{box-shadow:0 0 16px var(--green),0 0 32px rgba(0,255,65,0.5);}
+}
 .tl-card{
   width:100%;
   background:rgba(0,12,0,0.8);
   border:1px solid var(--border);
-  border-radius:2px;overflow:hidden;
-  transition:border-color .25s,transform .25s;
+  border-radius:2px;
   cursor:pointer;
+  transition:border-color .25s,transform .25s;
+  overflow:hidden;
 }
 .tl-card:hover{border-color:var(--border-bright);transform:translateY(-2px);}
 .tl-card.open{border-color:var(--border-bright);}
@@ -216,42 +215,37 @@ section{position:relative;z-index:1;}
   background:linear-gradient(90deg,transparent,var(--green-dim),transparent);
   opacity:0;transition:opacity .3s;
 }
-.tl-card.open .tl-card-header::before,.tl-card:hover .tl-card-header::before{opacity:1;}
+.tl-card:hover .tl-card-header::before,.tl-card.open .tl-card-header::before{opacity:1;}
 .tl-role{font-size:13px;font-weight:700;color:var(--green);margin-bottom:3px;}
 .tl-co{font-size:11px;color:var(--amber);margin-bottom:6px;}
-.tl-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.3rem;}
+.tl-meta{display:flex;align-items:center;flex-wrap:wrap;gap:.4rem;}
 .tl-period{font-size:10px;color:#c8ffd4;letter-spacing:.08em;padding:2px 8px;border:1px solid var(--border);}
-.tl-current-badge{font-size:9px;padding:2px 8px;background:rgba(0,255,65,0.1);border:1px solid rgba(0,255,65,0.4);color:var(--green);letter-spacing:.08em;animation:badge-glow 2s ease-in-out infinite;}
+.tl-badge{font-size:9px;padding:2px 8px;background:rgba(0,255,65,0.1);border:1px solid rgba(0,255,65,0.4);color:var(--green);letter-spacing:.08em;animation:badge-glow 2s ease-in-out infinite;}
 @keyframes badge-glow{0%,100%{border-color:rgba(0,255,65,0.4);}50%{border-color:rgba(0,255,65,0.8);}}
-.tl-toggle{font-size:10px;color:var(--text-dim);margin-top:.4rem;display:flex;align-items:center;gap:4px;}
-.tl-toggle .arr{transition:transform .3s;display:inline-block;}
-.tl-card.open .tl-toggle .arr{transform:rotate(90deg);}
-.tl-card-body{
-  max-height:0;overflow:hidden;
-  transition:max-height .4s cubic-bezier(0.4,0,0.2,1);
-  border-top:0 solid var(--border);
+.tl-hint{font-size:10px;color:var(--text-dim);margin-top:.5rem;display:flex;align-items:center;gap:4px;}
+.tl-hint .arr{display:inline-block;transition:transform .3s;}
+.tl-card.open .tl-hint .arr{transform:rotate(90deg);}
+.tl-body{
+  height:0;overflow:hidden;
+  transition:height .35s cubic-bezier(0.4,0,0.2,1);
 }
-.tl-card.open .tl-card-body{
-  max-height:600px;
+.tl-body-inner{
+  padding:1rem 1.2rem;
   border-top:1px solid var(--border);
 }
-.tl-card-body-inner{padding:1rem 1.2rem;}
 .tl-task{
   display:flex;gap:8px;margin-bottom:.6rem;
   font-size:11px;color:#c8ffd4;line-height:1.7;
 }
-.tl-task::before{content:'▸';color:var(--green);flex-shrink:0;margin-top:1px;font-size:10px;}
+.tl-task::before{content:'▸';color:var(--green);flex-shrink:0;margin-top:2px;font-size:10px;}
 .tl-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:.8rem;padding-top:.8rem;border-top:1px solid var(--border);}
 .tl-tag{font-size:10px;padding:2px 7px;background:rgba(0,255,255,0.05);border:1px solid rgba(0,255,255,0.15);color:var(--cyan);}
 @media(max-width:700px){
-  .tl-wrap::before{left:10px;}
-  .tl-item{grid-template-columns:24px 1fr!important;}
-  .tl-left-col{display:none;}
-  .tl-right-col{padding-left:1rem;}
-  .tl-dot-col{order:-1;}
-  .tl-card{width:100%;}
+  .tl-wrap::before{left:10px;transform:none;}
+  .tl-item{grid-template-columns:24px 1fr;}
+  .tl-left,.tl-right{grid-column:2;padding-left:1rem;padding-right:0;justify-content:flex-start;}
+  .tl-mid{grid-column:1;grid-row:1;}
 }
-
 /* EXPERIENCE OLD */
 .exp-timeline{position:relative;padding-left:2rem;}
 .exp-timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--green-dim),transparent);}
@@ -587,23 +581,23 @@ footer span{color:var(--green);}
       <h2>EXPERIENCE_PROFESSIONNELLE</h2>
       <div class="divider"></div>
     </div>
-    <div class="tl-wrap">
+    <div class="tl-wrap" id="exp-timeline">
 
-      <!-- ITEM 1 — gauche : Sofrecom actuel -->
+      <!-- 1 GAUCHE — Sofrecom 2024 -->
       <div class="tl-item current">
-        <div class="tl-left-col">
-          <div class="tl-card open" onclick="toggleCard(this)">
-            <div class="tl-card-header">
+        <div class="tl-left">
+          <div class="tl-card open" id="exp-0">
+            <div class="tl-card-header" onclick="tlToggle('exp-0')">
               <div class="tl-role">Ingénieur DevOps</div>
               <div class="tl-co">Sofrecom</div>
               <div class="tl-meta">
                 <span class="tl-period">JAN 2024 → PRÉSENT</span>
-                <span class="tl-current-badge">● EN POSTE</span>
+                <span class="tl-badge">● EN POSTE</span>
               </div>
-              <div class="tl-toggle"><span class="arr">▸</span> cliquer pour détails</div>
+              <div class="tl-hint"><span class="arr">▸</span> cliquer pour détails</div>
             </div>
-            <div class="tl-card-body">
-              <div class="tl-card-body-inner">
+            <div class="tl-body" id="exp-0-body">
+              <div class="tl-body-inner">
                 <div class="tl-task">Conception et automatisation du déploiement on-demand d'AWX via Terraform, Kubernetes et Helm — provisionnement réduit de plusieurs jours à moins d'une heure.</div>
                 <div class="tl-task">GitOps multi-clusters via FluxCD (staging / hors-prod / production) avec rollbacks automatisés et déploiements déclaratifs à grande échelle.</div>
                 <div class="tl-task">Pipeline DevSecOps bout-en-bout : Trivy, SonarQube, Gitleaks, SBOM, Vault, DefectDojo — détection automatique des vulnérabilités avant chaque déploiement.</div>
@@ -619,26 +613,26 @@ footer span{color:var(--green);}
             </div>
           </div>
         </div>
-        <div class="tl-dot-col"><div class="tl-dot"></div></div>
-        <div class="tl-empty"></div>
+        <div class="tl-mid"><div class="tl-dot"></div></div>
+        <div class="tl-right"></div>
       </div>
 
-      <!-- ITEM 2 — droite : Intelcia -->
+      <!-- 2 DROITE — Intelcia -->
       <div class="tl-item">
-        <div class="tl-empty"></div>
-        <div class="tl-dot-col"><div class="tl-dot"></div></div>
-        <div class="tl-right-col">
-          <div class="tl-card" onclick="toggleCard(this)">
-            <div class="tl-card-header">
+        <div class="tl-left"></div>
+        <div class="tl-mid"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-card" id="exp-1">
+            <div class="tl-card-header" onclick="tlToggle('exp-1')">
               <div class="tl-role">Ingénieur DevOps (Freelance)</div>
               <div class="tl-co">Intelcia</div>
               <div class="tl-meta">
                 <span class="tl-period">JAN 2023 → DÉC 2023</span>
               </div>
-              <div class="tl-toggle"><span class="arr">▸</span> cliquer pour détails</div>
+              <div class="tl-hint"><span class="arr">▸</span> cliquer pour détails</div>
             </div>
-            <div class="tl-card-body">
-              <div class="tl-card-body-inner">
+            <div class="tl-body" id="exp-1-body">
+              <div class="tl-body-inner">
                 <div class="tl-task">Conception d'environnements pour applications métiers critiques avec isolation réseau et gestion fine des accès.</div>
                 <div class="tl-task">Pipelines GitLab CI/CD pour déploiement automatique de microservices Kubernetes avec tests d'intégration et gates qualité.</div>
                 <div class="tl-task">Intégration Apache Airflow pour orchestration de workflows complexes avec scheduling, retry automatique et monitoring des DAGs.</div>
@@ -654,20 +648,20 @@ footer span{color:var(--green);}
         </div>
       </div>
 
-      <!-- ITEM 3 — gauche : Sofrecom 2019 -->
+      <!-- 3 GAUCHE — Sofrecom 2019 -->
       <div class="tl-item">
-        <div class="tl-left-col">
-          <div class="tl-card" onclick="toggleCard(this)">
-            <div class="tl-card-header">
+        <div class="tl-left">
+          <div class="tl-card" id="exp-2">
+            <div class="tl-card-header" onclick="tlToggle('exp-2')">
               <div class="tl-role">Ingénieur de Production DevOps</div>
               <div class="tl-co">Sofrecom</div>
               <div class="tl-meta">
                 <span class="tl-period">MAR 2019 → DÉC 2022</span>
               </div>
-              <div class="tl-toggle"><span class="arr">▸</span> cliquer pour détails</div>
+              <div class="tl-hint"><span class="arr">▸</span> cliquer pour détails</div>
             </div>
-            <div class="tl-card-body">
-              <div class="tl-card-body-inner">
+            <div class="tl-body" id="exp-2-body">
+              <div class="tl-body-inner">
                 <div class="tl-task">Migration complète Jenkins → GitLab CI/CD — visibilité améliorée et temps de build réduits de 40%.</div>
                 <div class="tl-task">Infrastructure hybride GitLab + Terraform + Ansible avec versioning IaC et revue systématique des changements.</div>
                 <div class="tl-task">Déploiement et administration de clusters Docker Swarm pour applications containerisées en production.</div>
@@ -681,26 +675,26 @@ footer span{color:var(--green);}
             </div>
           </div>
         </div>
-        <div class="tl-dot-col"><div class="tl-dot"></div></div>
-        <div class="tl-empty"></div>
+        <div class="tl-mid"><div class="tl-dot"></div></div>
+        <div class="tl-right"></div>
       </div>
 
-      <!-- ITEM 4 — droite : Capgemini -->
+      <!-- 4 DROITE — Capgemini -->
       <div class="tl-item">
-        <div class="tl-empty"></div>
-        <div class="tl-dot-col"><div class="tl-dot"></div></div>
-        <div class="tl-right-col">
-          <div class="tl-card" onclick="toggleCard(this)">
-            <div class="tl-card-header">
+        <div class="tl-left"></div>
+        <div class="tl-mid"><div class="tl-dot"></div></div>
+        <div class="tl-right">
+          <div class="tl-card" id="exp-3">
+            <div class="tl-card-header" onclick="tlToggle('exp-3')">
               <div class="tl-role">Ingénieur de Production</div>
               <div class="tl-co">Capgemini</div>
               <div class="tl-meta">
                 <span class="tl-period">AOÛ 2018 → FÉV 2019</span>
               </div>
-              <div class="tl-toggle"><span class="arr">▸</span> cliquer pour détails</div>
+              <div class="tl-hint"><span class="arr">▸</span> cliquer pour détails</div>
             </div>
-            <div class="tl-card-body">
-              <div class="tl-card-body-inner">
+            <div class="tl-body" id="exp-3-body">
+              <div class="tl-body-inner">
                 <div class="tl-task">Haute disponibilité des applications critiques clients — SLA contractuels &gt; 99.9% respectés.</div>
                 <div class="tl-task">Gestion et supervision des jobs batch via CA Autosys avec analyse des dépendances et résolution des incidents.</div>
                 <div class="tl-task">Scripts Shell et Perl pour automatisation des tâches récurrentes — réduction des interventions manuelles de 60%.</div>
@@ -715,20 +709,20 @@ footer span{color:var(--green);}
         </div>
       </div>
 
-      <!-- ITEM 5 — gauche : Docapost -->
+      <!-- 5 GAUCHE — Docapost -->
       <div class="tl-item">
-        <div class="tl-left-col">
-          <div class="tl-card" onclick="toggleCard(this)">
-            <div class="tl-card-header">
+        <div class="tl-left">
+          <div class="tl-card" id="exp-4">
+            <div class="tl-card-header" onclick="tlToggle('exp-4')">
               <div class="tl-role">Pilote d'Exploitation</div>
               <div class="tl-co">Docapost</div>
               <div class="tl-meta">
                 <span class="tl-period">JAN 2014 → SEP 2018</span>
               </div>
-              <div class="tl-toggle"><span class="arr">▸</span> cliquer pour détails</div>
+              <div class="tl-hint"><span class="arr">▸</span> cliquer pour détails</div>
             </div>
-            <div class="tl-card-body">
-              <div class="tl-card-body-inner">
+            <div class="tl-body" id="exp-4-body">
+              <div class="tl-body-inner">
                 <div class="tl-task">Supervision 24/7 et traitement des alertes/incidents N0, N1, N2 avec priorisation, escalade et suivi jusqu'à résolution.</div>
                 <div class="tl-task">Administration systèmes Windows Server 2008/2012 et GNU/Linux avec gestion des patches et mises à jour de sécurité.</div>
                 <div class="tl-task">Surveillance proactive via Zabbix, Nagios et Centreon — checks personnalisés et réduction des fausses alertes.</div>
@@ -741,12 +735,11 @@ footer span{color:var(--green);}
             </div>
           </div>
         </div>
-        <div class="tl-dot-col"><div class="tl-dot"></div></div>
-        <div class="tl-empty"></div>
+        <div class="tl-mid"><div class="tl-dot"></div></div>
+        <div class="tl-right"></div>
       </div>
 
     </div>
-
 <!-- PROJECTS -->
 <section class="section-pad alt-bg" id="projects">
   <div class="section-inner fade-in">
@@ -978,10 +971,40 @@ window.addEventListener('scroll',()=>{
 });
 </script>
 <script>
-// Timeline toggle
-function toggleCard(card){
-  card.classList.toggle('open');
+// Timeline — toggle individuel par ID
+function tlToggle(id) {
+  var card = document.getElementById(id);
+  var body = document.getElementById(id + '-body');
+  if (!card || !body) return;
+  var isOpen = card.classList.contains('open');
+  if (isOpen) {
+    body.style.height = body.scrollHeight + 'px';
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        body.style.height = '0px';
+        card.classList.remove('open');
+      });
+    });
+  } else {
+    body.style.height = body.scrollHeight + 'px';
+    card.classList.add('open');
+    body.addEventListener('transitionend', function onEnd() {
+      body.style.height = 'auto';
+      body.removeEventListener('transitionend', onEnd);
+    });
+  }
 }
+// Init : ouvrir exp-0 au chargement
+window.addEventListener('load', function() {
+  var body0 = document.getElementById('exp-0-body');
+  if (body0) {
+    body0.style.height = body0.scrollHeight + 'px';
+    body0.addEventListener('transitionend', function onEnd() {
+      body0.style.height = 'auto';
+      body0.removeEventListener('transitionend', onEnd);
+    });
+  }
+});
 
 // Custom cursor
 const cur = document.getElementById('cursor');
