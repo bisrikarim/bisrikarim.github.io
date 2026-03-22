@@ -138,8 +138,8 @@ nav{
 .hero-name{font-size:clamp(28px,5vw,52px);font-weight:700;color:var(--green);letter-spacing:-.02em;line-height:1;animation:glitch 8s infinite;}
 .fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
 .fade-in.visible{opacity:1;transform:translateY(0);}
-body{cursor:none;}a,button,[onclick]{cursor:none;}
-.custom-cursor{position:fixed;width:10px;height:14px;background:var(--green);pointer-events:none!important;z-index:99998;transform:translateY(-2px);opacity:.85;user-select:none;}
+
+
 .skill-tag:hover{color:var(--green);border-color:var(--green-dim);box-shadow:0 0 8px rgba(0,255,65,0.3),inset 0 0 8px rgba(0,255,65,0.05);}
 .stat-row{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem;justify-content:center;padding:1.5rem 0 0.5rem;}
 .stat{text-align:center;}
@@ -931,7 +931,7 @@ footer span{color:var(--green);}
   <p style="margin-top:.5rem;"><a href="/cdn-cgi/l/email-protection#47252e34352e692c26352e2a07202a262e2b6924282a" style="color:var(--green);text-decoration:none;"><span class="__cf_email__" data-cfemail="80e2e9f3f2e9aeebe1f2e9edc0e7ede1e9ecaee3efed">[email&#160;protected]</span></a> · <a href="https://github.com/bisrikarim" target="_blank" style="color:var(--green);text-decoration:none;">GitHub</a> · <a href="https://linkedin.com/in/bisrikarim" target="_blank" style="color:var(--green);text-decoration:none;">LinkedIn</a></p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><div class="custom-cursor" id="cursor"></div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
 const cmds = [
   'ls projects/ --ai-powered',
@@ -1006,14 +1006,7 @@ window.addEventListener('load', function() {
   }
 });
 
-// Custom cursor
-const cur = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
-  cur.style.left = e.clientX + 'px';
-  cur.style.top  = e.clientY + 'px';
-});
-document.addEventListener('mouseleave', () => cur.style.opacity = '0');
-document.addEventListener('mouseenter', () => cur.style.opacity = '.85');
+
 
 // Progress bar
 window.addEventListener('scroll', () => {
